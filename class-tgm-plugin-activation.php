@@ -1181,6 +1181,9 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 				if ( $this->is_plugin_active( $slug ) && false === $this->does_plugin_have_update( $slug ) ) {
 					continue;
 				}
+				if ( false === $plugin['has_notices'] ) {
+					continue;
+				}
 
 				if ( ! $this->is_plugin_installed( $slug ) ) {
 					if ( current_user_can( 'install_plugins' ) ) {
@@ -1497,6 +1500,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 				'is_callable'        => '',      // String|Array.
 				'class_exists'       => '',      // String.
 				'is_defined'         => '',      // String.
+				'has_notices'        => true,    // Boolean.
 			);
 
 			// Prepare the received data.
@@ -1511,6 +1515,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 			$plugin['required']           = TGMPA_Utils::validate_bool( $plugin['required'] );
 			$plugin['force_activation']   = TGMPA_Utils::validate_bool( $plugin['force_activation'] );
 			$plugin['force_deactivation'] = TGMPA_Utils::validate_bool( $plugin['force_deactivation'] );
+			$plugin['has_notices']        = TGMPA_Utils::validate_bool( $plugin['has_notices'] );
 
 			// Enrich the received data.
 			$plugin['file_path']   = $this->_get_plugin_basename_from_slug( $plugin['slug'] );

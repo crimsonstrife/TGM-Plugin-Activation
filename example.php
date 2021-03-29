@@ -72,6 +72,7 @@ function my_theme_register_required_plugins() {
 			'is_callable'        => '', // If set, this callable will be be checked for availability to determine if a plugin is active.
 			'class_exists'       => '', // Same behavior as is_callable, this checks if a class exists to determine if a plugin is active.
 			'is_defined'         => '', // Same behavior as is_callable, this checks if a constant is defined to determine if a plugin is active.
+			'has_notices'        => true, // If false, this plugin will not be listed in the administrator notices. Useful to hide notice for recommended plugins. Default true.
 		),
 
 		// This is an example of how to include a plugin from an arbitrary external source in your theme.
